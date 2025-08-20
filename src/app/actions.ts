@@ -3,6 +3,7 @@
 import { analyzeImageContent } from '@/ai/flows/analyze-image-content';
 import { generateFunFacts } from '@/ai/flows/generate-fun-facts';
 import { generateQuizQuestions } from '@/ai/flows/generate-quiz-questions';
+import { textToSpeech } from '@/ai/flows/text-to-speech';
 import type { QuizQuestion } from '@/lib/types';
 
 export async function identifyPlanetFromImage(
@@ -43,5 +44,17 @@ export async function getQuiz(
   } catch (e) {
     console.error(e);
     return { error: 'Failed to generate the quiz. Please try again.' };
+  }
+}
+
+export async function getNarrationAudio(
+  text: string
+): Promise<{ audioDataUri: string } | { error: string }> {
+  try {
+    const result = await textToSpeech({ text });
+    return result;
+  } catch (e) {
+    console.error(e);
+    return { error: 'Failed to generate narration. Please try again.' };
   }
 }
