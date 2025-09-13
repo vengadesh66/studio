@@ -15,15 +15,15 @@ interface PlanetDisplayProps {
 }
 
 const planetImages: Record<string, { src: string, hint: string }> = {
-    mercury: { src: 'https://i.ibb.co/L9Wp9M4/mercury.png', hint: 'cartoon mercury' },
-    venus: { src: 'https://i.ibb.co/yBS2L0x/venus.png', hint: 'cartoon venus' },
-    earth: { src: 'https://i.ibb.co/9gP0n2x/earth.png', hint: 'cartoon earth' },
-    mars: { src: 'https://i.ibb.co/yB3YV8p/mars.png', hint: 'cartoon mars' },
-    jupiter: { src: 'https://i.ibb.co/h1SWC2j/jupiter.png', hint: 'cartoon jupiter' },
-    saturn: { src: 'https://i.ibb.co/Y05xM7p/saturn.png', hint: 'cartoon saturn' },
-    uranus: { src: 'https://i.ibb.co/z5y7b1w/uranus.png', hint: 'cartoon uranus' },
-    neptune: { src: 'https://i.ibb.co/rMVGFCs/neptune.png', hint: 'cartoon neptune' },
-    default: { src: '/images/planet.png', hint: 'cartoon planet' },
+    mercury: { src: 'https://picsum.photos/seed/mercury/250/250', hint: 'cartoon mercury' },
+    venus: { src: 'https://picsum.photos/seed/venus/250/250', hint: 'cartoon venus' },
+    earth: { src: 'https://picsum.photos/seed/earth/250/250', hint: 'cartoon earth' },
+    mars: { src: 'https://picsum.photos/seed/mars/250/250', hint: 'cartoon mars' },
+    jupiter: { src: 'https://picsum.photos/seed/jupiter/250/250', hint: 'cartoon jupiter' },
+    saturn: { src: 'https://picsum.photos/seed/saturn/250/250', hint: 'cartoon saturn' },
+    uranus: { src: 'https://picsum.photos/seed/uranus/250/250', hint: 'cartoon uranus' },
+    neptune: { src: 'https://picsum.photos/seed/neptune/250/250', hint: 'cartoon neptune' },
+    default: { src: 'https://picsum.photos/seed/planet/250/250', hint: 'cartoon planet' },
   };
 
 export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDisplayProps) {
