@@ -15,15 +15,15 @@ interface PlanetDisplayProps {
 }
 
 const planetImages: Record<string, { src: string, hint: string }> = {
-  mercury: { src: 'https://placehold.co/300x300/A8A2A2/FFFFFF.png', hint: 'cartoon mercury' },
-  venus: { src: 'https://placehold.co/300x300/E6C2A6/FFFFFF.png', hint: 'cartoon venus' },
-  earth: { src: 'https://placehold.co/300x300/6FA8DC/FFFFFF.png', hint: 'cartoon earth' },
-  mars: { src: 'https://placehold.co/300x300/C1440E/FFFFFF.png', hint: 'cartoon mars' },
-  jupiter: { src: 'https://placehold.co/300x300/D8B48A/FFFFFF.png', hint: 'cartoon jupiter' },
-  saturn: { src: 'https://placehold.co/300x300/E3D5B9/FFFFFF.png', hint: 'cartoon saturn' },
-  uranus: { src: 'https://placehold.co/300x300/A4D8E6/FFFFFF.png', hint: 'cartoon uranus' },
-  neptune: { src: 'https://placehold.co/300x300/3A5FCD/FFFFFF.png', hint: 'cartoon neptune' },
-  default: { src: 'https://placehold.co/300x300/808080/FFFFFF.png', hint: 'cartoon planet' },
+  mercury: { src: '/images/mercury.png', hint: 'cartoon mercury' },
+  venus: { src: '/images/venus.png', hint: 'cartoon venus' },
+  earth: { src: '/images/earth.png', hint: 'cartoon earth' },
+  mars: { src: '/images/mars.png', hint: 'cartoon mars' },
+  jupiter: { src: '/images/jupiter.png', hint: 'cartoon jupiter' },
+  saturn: { src: '/images/saturn.png', hint: 'cartoon saturn' },
+  uranus: { src: '/images/uranus.png', hint: 'cartoon uranus' },
+  neptune: { src: '/images/neptune.png', hint: 'cartoon neptune' },
+  default: { src: '/images/planet.png', hint: 'cartoon planet' },
 };
 
 export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDisplayProps) {
