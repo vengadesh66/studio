@@ -7,24 +7,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Volume2, PlayCircle, Loader2 } from 'lucide-react';
 import { getNarrationAudio } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
+import { planetImages } from '@/lib/planet-images';
 
 interface PlanetDisplayProps {
   planetName: string;
   funFacts: string[];
   onStartQuiz: () => void;
 }
-
-const planetImages: Record<string, { src: string, hint: string }> = {
-    mercury: { src: '/mercury.png', hint: 'planet mercury' },
-    venus: { src: '/venus.png', hint: 'planet venus' },
-    earth: { src: '/earth.png', hint: 'planet earth' },
-    mars: { src: '/mars.png', hint: 'planet mars' },
-    jupiter: { src: '/jupiter.png', hint: 'planet jupiter' },
-    saturn: { src: '/saturn.png', hint: 'planet saturn' },
-    uranus: { src: '/uranus.png', hint: 'planet uranus' },
-    neptune: { src: '/neptune.png', hint: 'planet neptune' },
-    default: { src: 'https://picsum.photos/seed/planet/250/250', hint: 'cartoon planet' },
-  };
 
 export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDisplayProps) {
   const [isNarrating, setIsNarrating] = useState(false);
@@ -90,6 +79,7 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
           height={250}
           className="rounded-full shadow-2xl shadow-primary/40"
           data-ai-hint={planetImage.hint}
+          unoptimized // Required for external URLs like picsum
         />
         <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-16 bg-background rounded-full transition-all duration-200 ${isNarrating ? 'h-12 animate-pulse' : 'h-4'}`}></div>
       </div>
