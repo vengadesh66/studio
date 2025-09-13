@@ -25,15 +25,17 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
   const planetImage = planetImages[planetKey] || planetImages.default;
 
   const handleNarrate = async () => {
-    if (isGenerating || isNarrating) {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-      setIsNarrating(false);
-      return;
+    if (audioRef.current) {
+        if (isNarrating) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            setIsNarrating(false);
+            return;
+        }
     }
-
+  
+    if (isGenerating) return;
+    
     setIsGenerating(true);
     const allFacts = funFacts.join('. ');
     const result = await getNarrationAudio(allFacts);
@@ -45,9 +47,12 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
     }
 
     if (audioRef.current) {
-      audioRef.current.src = result.audioDataUri;
-      audioRef.current.play();
-      setIsNarrating(true);
+        audioRef.current.src = result.audioDataUri;
+        audioRef.current.play().catch(e => {
+            console.error("Audio play failed:", e);
+            toast({ title: 'Error', description: 'Could not play audio.', variant: 'destructive' });
+            setIsNarrating(false);
+        });
     }
   };
 
@@ -55,12 +60,19 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
     const audio = new Audio();
     audioRef.current = audio;
 
+    const handleAudioPlay = () => setIsNarrating(true);
     const handleAudioEnd = () => setIsNarrating(false);
+    const handleAudioPause = () => setIsNarrating(false);
+
+    audio.addEventListener('play', handleAudioPlay);
     audio.addEventListener('ended', handleAudioEnd);
+    audio.addEventListener('pause', handleAudioPause);
 
     return () => {
       if (audio) {
+        audio.removeEventListener('play', handleAudioPlay);
         audio.removeEventListener('ended', handleAudioEnd);
+        audio.removeEventListener('pause', handleAudioPause);
         audio.pause();
         audio.src = '';
       }
@@ -71,7 +83,7 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
     <div className="flex flex-col items-center gap-6 w-full animate-in fade-in duration-500">
       <audio ref={audioRef} className="hidden" />
       <h2 className="text-4xl md:text-5xl font-headline font-bold text-center capitalize text-accent">{planetName}</h2>
-      <div className={`relative transition-transform duration-300 ${isNarrating ? 'scale-105' : 'scale-100'}`}>
+      <div className={`relative transition-transform duration-300 ${isNarrating ? 'animate-bounce' : ''}`}>
         <Image
           src={planetImage.src}
           alt={`Image of ${planetName}`}
@@ -81,7 +93,6 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
           data-ai-hint={planetImage.hint}
           unoptimized // Required for external URLs like picsum
         />
-        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-16 bg-background rounded-full transition-all duration-200 ${isNarrating ? 'h-12 animate-pulse' : 'h-4'}`}></div>
       </div>
       
       <Card className="w-full bg-primary/10">
