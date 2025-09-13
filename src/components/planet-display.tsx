@@ -15,14 +15,14 @@ interface PlanetDisplayProps {
 }
 
 const planetImages: Record<string, { src: string, hint: string }> = {
-    mercury: { src: 'https://picsum.photos/seed/mercury/250/250', hint: 'cartoon mercury' },
-    venus: { src: 'https://picsum.photos/seed/venus/250/250', hint: 'cartoon venus' },
-    earth: { src: 'https://picsum.photos/seed/earth/250/250', hint: 'cartoon earth' },
-    mars: { src: 'https://picsum.photos/seed/mars/250/250', hint: 'cartoon mars' },
-    jupiter: { src: 'https://picsum.photos/seed/jupiter/250/250', hint: 'cartoon jupiter' },
-    saturn: { src: 'https://picsum.photos/seed/saturn/250/250', hint: 'cartoon saturn' },
-    uranus: { src: 'https://picsum.photos/seed/uranus/250/250', hint: 'cartoon uranus' },
-    neptune: { src: 'https://picsum.photos/seed/neptune/250/250', hint: 'cartoon neptune' },
+    mercury: { src: '/mercury.png', hint: 'planet mercury' },
+    venus: { src: '/venus.png', hint: 'planet venus' },
+    earth: { src: '/earth.png', hint: 'planet earth' },
+    mars: { src: '/mars.png', hint: 'planet mars' },
+    jupiter: { src: '/jupiter.png', hint: 'planet jupiter' },
+    saturn: { src: '/saturn.png', hint: 'planet saturn' },
+    uranus: { src: '/uranus.png', hint: 'planet uranus' },
+    neptune: { src: '/neptune.png', hint: 'planet neptune' },
     default: { src: 'https://picsum.photos/seed/planet/250/250', hint: 'cartoon planet' },
   };
 
@@ -85,7 +85,7 @@ export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDispl
       <div className={`relative transition-transform duration-300 ${isNarrating ? 'scale-105' : 'scale-100'}`}>
         <Image
           src={planetImage.src}
-          alt={`Cartoon of ${planetName}`}
+          alt={`Image of ${planetName}`}
           width={250}
           height={250}
           className="rounded-full shadow-2xl shadow-primary/40"
