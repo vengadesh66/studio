@@ -15,16 +15,16 @@ interface PlanetDisplayProps {
 }
 
 const planetImages: Record<string, { src: string, hint: string }> = {
-  mercury: { src: '/images/mercury.png', hint: 'cartoon mercury' },
-  venus: { src: '/images/venus.png', hint: 'cartoon venus' },
-  earth: { src: '/images/earth.png', hint: 'cartoon earth' },
-  mars: { src: '/images/mars.png', hint: 'cartoon mars' },
-  jupiter: { src: '/images/jupiter.png', hint: 'cartoon jupiter' },
-  saturn: { src: '/images/saturn.png', hint: 'cartoon saturn' },
-  uranus: { src: '/images/uranus.png', hint: 'cartoon uranus' },
-  neptune: { src: '/images/neptune.png', hint: 'cartoon neptune' },
-  default: { src: '/images/planet.png', hint: 'cartoon planet' },
-};
+    mercury: { src: 'https://i.ibb.co/L9Wp9M4/mercury.png', hint: 'cartoon mercury' },
+    venus: { src: 'https://i.ibb.co/yBS2L0x/venus.png', hint: 'cartoon venus' },
+    earth: { src: 'https://i.ibb.co/9gP0n2x/earth.png', hint: 'cartoon earth' },
+    mars: { src: 'https://i.ibb.co/yB3YV8p/mars.png', hint: 'cartoon mars' },
+    jupiter: { src: 'https://i.ibb.co/h1SWC2j/jupiter.png', hint: 'cartoon jupiter' },
+    saturn: { src: 'https://i.ibb.co/Y05xM7p/saturn.png', hint: 'cartoon saturn' },
+    uranus: { src: 'https://i.ibb.co/z5y7b1w/uranus.png', hint: 'cartoon uranus' },
+    neptune: { src: 'https://i.ibb.co/rMVGFCs/neptune.png', hint: 'cartoon neptune' },
+    default: { src: '/images/planet.png', hint: 'cartoon planet' },
+  };
 
 export function PlanetDisplay({ planetName, funFacts, onStartQuiz }: PlanetDisplayProps) {
   const [isNarrating, setIsNarrating] = useState(false);
